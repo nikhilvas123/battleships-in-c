@@ -1,16 +1,16 @@
 # Name of the project
-PROJECT_NAME = Calculator
+PROJECT_NAME = battleships
 
 # Output directory
 BUILD = build
 
 # All source code files
 SRC = project_main.c\
-src/calculator_operations.c
+src/battleships.c
 
 # All test source files
-TEST_SRC = src/calculator_operations.c\
-test/test_calculator_operations.c\
+TEST_SRC = src/battleships.c\
+test/test_battleships.c\
 unity/unity.c\
 
 TEST_OUTPUT = $(BUILD)/Test_$(PROJECT_NAME).out
@@ -24,7 +24,7 @@ INC	= -Iinc\
 INCLUDE_LIBS = -lcunit
 
 # Project Output name
-PROJECT_OUTPUT = $(BUILD)/$(PROJECT_NAME).out
+PROJECT_OUTPUT = $(BUILD)/$(PROJECT_NAME)
 
 # Document files
 DOCUMENTATION_OUTPUT = documentation/html

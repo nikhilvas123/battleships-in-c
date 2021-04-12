@@ -9,3 +9,7 @@ void print_menu(){
     printf("*************************************************\n\n");
     printf("Main Menu\n\n1: Play\n2: Quit\n");
 }
+
+void play_game(){
+    return;
+}

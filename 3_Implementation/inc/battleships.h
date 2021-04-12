@@ -20,8 +20,8 @@
  * 
  */
 typedef enum option{
-    EXIT = -1,
-    START = 0,
+    EXIT = 2,
+    START = 1,
 }option;
 
 typedef enum orientation{
@@ -71,5 +71,7 @@ void check_collision(ship **ships, int x, int y, orientation o);
 int check_hit(ship **ships, int x, int y);
 
 ship* generate_ship(ship **ships, int ship_no, int size);
+
+void play_game();
 
 #endif

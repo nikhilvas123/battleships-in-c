@@ -114,6 +114,29 @@
 #include<battleships.h>
 
 int main(){
+    int choice;
+    char ch;
+    option op;
     print_menu();
+    scanf("%d",&choice);
+    op = choice;
+    while(1){
+        switch(op){
+            case START:
+                play_game();
+                printf("Do you want to play again ? (y/n)\n");
+                scanf(" %c",&ch);
+                while(ch != 'y' && ch != 'n'){
+                    printf("Wrong input. Enter y/n\n");
+                    scanf(" %c",&ch);
+                }
+                if(ch == 'y')
+                    break;
+            case EXIT:
+                printf("Goodbye!\n");
+                return 0;
+            
+        }
+    }
     return 0;
 }
