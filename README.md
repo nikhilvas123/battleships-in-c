@@ -12,7 +12,7 @@ Ship size  |Number of ships
 The computer places all the ships at random in any orientation. The player has to hit all the ships (guess the location of all the ships). Correct hit will be denoted as 'x', miss hit will be denoted as 'o'.
 ##### Note:
 Image shown below is a reference and has more ships and miss hit is indicated by 'x'. 
-   ![Battleships](https://upload.wikimedia.org/wikipedia/commons/6/65/Battleship_game_board.svg?w=500&h=500&q=100)
+   ![Battleships](https://github.com/arc-arnob/LnT_Mini_Project/blob/main/1_Requirements/system.png?w=500&h=500&q=100)
 Build | Code Quality | Unity | [Git Inspector](using github.io option)
 |---------|--------------|-----------|------------------
 [![C/C++ CI](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/c-cpp.yml)|[![Static Check](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/arc-cppcheck.yml/badge.svg)](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/arc-cppcheck.yml) | To be added| [![Git Inspector CI](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/arc-gitinspector.yml/badge.svg)](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/arc-gitinspector.yml)
