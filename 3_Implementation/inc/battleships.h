@@ -15,7 +15,7 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
-
+#include<time.h>
 /**
  * Create a user defined datatype for menu options
  * @brief Create a user defined datatype for menu options
@@ -68,11 +68,11 @@ void print_menu();
 */
 void print_grid(const char grid[10][10]);
 
-void check_collision(ship **ships, int x, int y, orientation o);
+int check_collision(ship **ships, ship * s, int ship_no);
 
 int check_hit(ship **ships, int x, int y);
 
-ship* generate_ship(ship **ships, int ship_no, int size);
+ship* generate_ship(ship **ships, int ship_no);
 
 void play_game();
 
