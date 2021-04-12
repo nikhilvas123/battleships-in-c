@@ -22,7 +22,7 @@ Battleship is known worldwide as a pencil and paper game which dates from World 
 
 ## Defining The System
 
-![Description](https://github.com/nikhilvas123/battleships-in-c/blob/main/1_Requirements/system.png)
+![Description](https://github.com/nikhilvas123/battleships-in-c/blob/main/1_Requirements/system.png?w=500&h=500&q=100)
 
 ### Explanation:
 * Input block takes input from keyboard.
@@ -30,7 +30,7 @@ Battleship is known worldwide as a pencil and paper game which dates from World 
 * Output block prints output on console.
 
 ## SWOT ANALYSIS
-![SWOT Analysis](https://github.com/nikhilvas123/battleships-in-c/blob/main/1_Requirements/swot.png)
+![SWOT Analysis](https://github.com/nikhilvas123/battleships-in-c/blob/main/1_Requirements/swot.png?w=500&h=500&q=100)
 
 # 4W&#39;s and 1&#39;H
 
