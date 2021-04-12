@@ -113,7 +113,21 @@
 
 #include<battleships.h>
 
-int main(){
+int dev = 0;
+
+int main(int argc, char **argv){
+    if(argc == 2){
+        if(strcmp(argv[1],"dev"))
+            dev = 1;
+        else{
+            printf("Invalid arguments. Use dev for development, else no arguments\n");
+            return 0;
+        }
+    }
+    else if(argc >2){
+        printf("Invalid arguments. Use dev for development, else no arguments\n");
+        return 0;
+    }
     int choice;
     char ch;
     option op;
@@ -135,7 +149,12 @@ int main(){
             case EXIT:
                 printf("Goodbye!\n");
                 return 0;
-            
+            default:
+                printf("Invalid choice.\n");
+                print_menu();
+                scanf(" %d", &choice);
+                op = choice;
+                break;
         }
     }
     return 0;

@@ -13,6 +13,8 @@
 #define __BATTLESHIPS_H__
 
 #include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
 
 /**
  * Create a user defined datatype for menu options
@@ -64,7 +66,7 @@ void print_menu();
 * @param[in] grid 
 * @brief Prints the griod
 */
-void print_grid(char **grid);
+void print_grid(const char grid[10][10]);
 
 void check_collision(ship **ships, int x, int y, orientation o);
 
