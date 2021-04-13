@@ -42,6 +42,7 @@ typedef struct ship{
     pos p;
     int len;
     orientation o;
+    int hit;
 }ship;
 
 /**
@@ -67,7 +68,7 @@ pos *ship_coordinates(ship *s);
 
 int check_collision_boundary(ship *s);
 
-int check_hit(ship **ships, pos p);
+int check_hit_update_grid(ship **ships, char grid[10][10], pos p);
 
 ship* generate_ship(ship **ships, int ship_no);
 
