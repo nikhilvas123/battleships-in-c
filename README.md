@@ -1,6 +1,6 @@
 ## SDLC based implementation of Battleships game
-   
-  A simple implementation of the classic Batleships game. There is a grid of 10x10. There are 5 ships in total.
+
+A simple implementation of the classic Batleships game. There is a grid of 10x10. There are 5 ships in total.
 #### The dimensions are
 Ship size  |Number of ships 
 -----------|---------------
@@ -13,9 +13,9 @@ The computer places all the ships at random in any orientation. The player has t
 ##### Note:
 Image shown below is a reference and has more ships and miss hit is indicated by 'x'. 
    ![Battleships](https://github.com/nikhilvas123/battleships-in-c/blob/main/1_Requirements/battleships.svg?w=500&h=500&q=100)
-Build | Code Quality | Unity | [Git Inspector](using github.io option)
-|---------|--------------|-----------|------------------
-[![C/C++ CI](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/c-cpp.yml)|[![Static Check](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/arc-cppcheck.yml/badge.svg)](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/arc-cppcheck.yml) | To be added| [![Git Inspector CI](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/arc-gitinspector.yml/badge.svg)](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/arc-gitinspector.yml)
+Build | Code Quality | Unity | Git Instpector | Codacy Badge
+|-----|--------------|-------|----------------|-------------
+[![C/C++ CI](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/c-cpp.yml)|[![Static Check](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/arc-cppcheck.yml/badge.svg)](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/arc-cppcheck.yml) | To be added| [![Git Inspector CI](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/arc-gitinspector.yml/badge.svg)](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/arc-gitinspector.yml) | [![Codacy Badge](https://app.codacy.com/project/badge/Grade/40bc107218b441f5b104fe14d08c92b5)](https://www.codacy.com/gh/nikhilvas123/battleships-in-c/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=nikhilvas123/battleships-in-c&amp;utm_campaign=Badge_Grade)
 
 ## Folder Structure
 Folder               | Description
@@ -37,7 +37,7 @@ SF Id. |  Name   |    Features    | Issuess Raised |Issues Resolved|No Test Case
 
 ## Challenges Faced and How Was It Overcome
 
-1. ABC
-2. BCD
-3. ...
-4. ...
+1.   ABC
+2.   BCD
+3.   ...
+4.   ...
