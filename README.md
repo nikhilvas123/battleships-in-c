@@ -10,9 +10,8 @@ Ship size  |Number of ships
 6          |1           
 
 The computer places all the ships at random in any orientation. The player has to hit all the ships (guess the location of all the ships). Correct hit will be denoted as 'x', miss hit will be denoted as 'o'.
-##### Note:
-Image shown below is a reference and has more ships and miss hit is indicated by 'x'. 
-   ![Battleships](https://github.com/nikhilvas123/battleships-in-c/blob/main/1_Requirements/battleships.svg?w=500&h=500&q=100)
+
+   ![Battleships](https://github.com/nikhilvas123/battleships-in-c/blob/main/1_Requirements/battleships.png?w=500&h=500&q=100)
 Build | Code Quality | Unity | Git Instpector | Codacy Badge
 |-----|--------------|-------|----------------|-------------
 [![C/C++ CI](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/c-cpp.yml)|[![Static Check](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/arc-cppcheck.yml/badge.svg)](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/arc-cppcheck.yml) | To be added| [![Git Inspector CI](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/arc-gitinspector.yml/badge.svg)](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/arc-gitinspector.yml) | [![Codacy Badge](https://app.codacy.com/project/badge/Grade/40bc107218b441f5b104fe14d08c92b5)](https://www.codacy.com/gh/nikhilvas123/battleships-in-c/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=nikhilvas123/battleships-in-c&amp;utm_campaign=Badge_Grade)
