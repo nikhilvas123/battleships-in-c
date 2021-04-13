@@ -117,7 +117,7 @@ int dev = 0;
 
 int main(int argc, char **argv){
     if(argc == 2){
-        if(strcmp(argv[1],"dev"))
+        if(strcmp("dev",argv[1]) == 0)
             dev = 1;
         else{
             printf("Invalid arguments. Use dev for development, else no arguments\n");

@@ -6,6 +6,8 @@
 
 const int SHIP_SIZES[NO_OF_SHIPS]={2,2,3,4,6};
 
+extern int dev;
+
 void print_menu(){
     printf("*************************************************\n\n");
     printf("Welcome to Battleships!\n\nHOW TO PLAY:There is a grid of 10x10.");
@@ -18,31 +20,16 @@ void print_menu(){
 
 void print_grid(const char grid[GRID_SIZE][GRID_SIZE]){
     int i, j;
+    printf("  ");
+    for(i=0; i<GRID_SIZE; i++)
+        printf("%d ",i);
+    printf("\n");
     for(i=0; i<GRID_SIZE; i++){
+        printf("%d ",i);
         for(j=0; j<GRID_SIZE; j++)
             printf("%c ",grid[i][j]);
     printf("\n");
     }    
-}
-
-void print_ship(ship *s){   
-    char ch[6];
-    printf("Ship Location:%d %d\nShip size:%d\n",s->p.x, s->p.y, s->len);
-    switch(s->o){
-        case UP:
-            sprintf(ch,"%s","UP");
-            break;
-        case DOWN:
-            sprintf(ch,"%s","DOWN");
-            break;
-        case LEFT:
-            sprintf(ch,"%s","LEFT");
-            break;
-        case RIGHT:
-            sprintf(ch,"%s","RIGHT");
-            break;
-    }
-    printf("Ship orientation:%s\n",ch);
 }
 
 int check_collision_boundary(ship * s){
@@ -102,18 +89,58 @@ pos *ship_coordinates(ship *s){
     return p;
 }
 
+void print_ship(ship *s){   
+    char ch[6];
+    pos *p = ship_coordinates(s);
+    printf("Ship Location:%d,%d\nShip size:%d\n",s->p.x, s->p.y, s->len);
+    printf("Ship coordinates:(%d,%d)->(%d,%d)\n",p[0].x,p[0].y,p[1].x,p[1].y);
+    free(p);
+    switch(s->o){
+        case UP:
+            sprintf(ch,"%s","UP");
+            break;
+        case DOWN:
+            sprintf(ch,"%s","DOWN");
+            break;
+        case LEFT:
+            sprintf(ch,"%s","LEFT");
+            break;
+        case RIGHT:
+            sprintf(ch,"%s","RIGHT");
+            break;
+    }
+    printf("Ship orientation:%s\n",ch);
+}
+
 int check_collision_ships(ship **ships, ship *s, int ship_no){
     int i,col = 0;
     pos *pos1, *pos2;
     pos1 = ship_coordinates(s);
     for(i=0; i<ship_no; i++){
         pos2 = ship_coordinates(ships[i]);
-        if(pos1[0].x > pos2[1].x || pos1[1].x < pos2[0].x || pos1[0].x > pos2[1].y || pos1[1].y < pos2[0].y)
+        if(pos1[0].x > pos2[1].x || pos1[1].x < pos2[0].x || pos1[0].y > pos2[1].y || pos1[1].y < pos2[0].y){
             col = 0;
-        else   
+        }
+        else{   
             col = 1;
+            free(pos2);
+            break;
+        }
+        free(pos2);
     }
+    free(pos1);
     return col;
+}
+
+void grid_show_ships(char grid[GRID_SIZE][GRID_SIZE], ship **ships){
+    pos *p;
+    int i,j,k;
+    for(i=0; i<NO_OF_SHIPS; i++){
+        p = ship_coordinates(ships[i]);
+        for(j=p[0].x; j<=p[1].x; j++)
+            for(k=p[0].y; k<=p[1].y; k++)
+                grid[k][j] = '^';
+    }
 }
 
 int check_collision(ship **ships, ship *s,int ship_no){
@@ -151,12 +178,12 @@ void play_game(){
     for(i=0; i<NO_OF_SHIPS; i++){
         s[i] = generate_ship(s,i);
     }
-    
     for(i=0; i<NO_OF_SHIPS; i++){
         print_ship(s[i]);
     }
-
     memset(grid,'.',GRID_SIZE*GRID_SIZE);
+    if(dev)
+        grid_show_ships(grid,s);
     printf("Hits left: %d\n",att);
     print_grid(grid);
 }

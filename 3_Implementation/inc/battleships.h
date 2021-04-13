@@ -80,6 +80,8 @@ int check_hit(ship **ships, int x, int y);
 
 ship* generate_ship(ship **ships, int ship_no);
 
+void grid_show_ships(char gird[10][10], ship **ships);
+
 void play_game();
 
 #endif
