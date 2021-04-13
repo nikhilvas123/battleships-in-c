@@ -9,8 +9,12 @@ const int SHIP_SIZES[NO_OF_SHIPS]={2,2,3,4,6};
 extern int dev;
 
 void print_menu(){
-    printf("*************************************************\n\n");
-    printf("Welcome to Battleships!\n\nHOW TO PLAY:There is a grid of 10x10.");
+    printf("*************************************************\n");
+    if(dev){
+        printf(" D  E  V    M  O  D  E\n");
+        printf("*************************************************\n");
+    }
+    printf("\nWelcome to Battleships!\n\nHOW TO PLAY:There is a grid of 10x10.");
     printf(" The computer places all the ships in random location. You are promted to enter coordinates to guess where the ship is.");
     printf("Enter x cordinate space and then y coordinate(Ex: 2 3). The coordinates are (1,1) for top left and (10,10) for bottom right.");
     printf("You have 15 miss hits. Ships are\n--      x2\n---     x1\n----    x1\n------  x1\n");
@@ -20,12 +24,14 @@ void print_menu(){
 
 void print_grid(const char grid[GRID_SIZE][GRID_SIZE]){
     int i, j;
-    printf("  ");
+    printf("   ");
     for(i=0; i<GRID_SIZE; i++)
-        printf("%d ",i);
+        printf("%d ",i+1);
     printf("\n");
     for(i=0; i<GRID_SIZE; i++){
-        printf("%d ",i);
+        printf("%d ",i+1);
+        if(i!=GRID_SIZE -1)
+            printf(" ");
         for(j=0; j<GRID_SIZE; j++)
             printf("%c ",grid[i][j]);
     printf("\n");
@@ -168,22 +174,63 @@ ship* generate_ship(ship **ships, int ship_no){
     return s;
 }
 
+int check_hit(ship **ships, pos p){
+    int i;
+    pos *s_p;
+    for(i=0; i<NO_OF_SHIPS; i++){
+        s_p = ship_coordinates(ships[i]);
+        if((p.x - 1 >= s_p[0].x && p.x - 1 <= s_p[1].x) && (p.y - 1 >= s_p[0].y && p.y - 1 <= s_p[1].y)){    
+            free(s_p);
+            return 1;
+        }
+    }
+    free(s_p);
+    return 0;
+}
+
+int check_valid_coordinate(char grid[GRID_SIZE][GRID_SIZE], pos p){
+    if(p.x < 1 || p.x > GRID_SIZE || p.y < 1 || p.y > GRID_SIZE)
+        return 0;
+    if(grid[p.y - 1][p.x - 1] == 'x' || grid[p.y - 1][p.x - 1] =='o')
+        return 0;
+    else
+        return 1;
+}
+
 void play_game(){
+    pos p;
     srand(time(0));
     int att = ATTEMPTS;
     int i;
     char grid[GRID_SIZE][GRID_SIZE];
-    ship* s[NO_OF_SHIPS];
+    ship* ships[NO_OF_SHIPS];
     
     for(i=0; i<NO_OF_SHIPS; i++){
-        s[i] = generate_ship(s,i);
+        ships[i] = generate_ship(ships,i);
     }
-    for(i=0; i<NO_OF_SHIPS; i++){
-        print_ship(s[i]);
-    }
+    // for(i=0; i<NO_OF_SHIPS; i++){
+    //     print_ship(ships[i]);
+    // }
     memset(grid,'.',GRID_SIZE*GRID_SIZE);
     if(dev)
-        grid_show_ships(grid,s);
-    printf("Hits left: %d\n",att);
-    print_grid(grid);
+        grid_show_ships(grid,ships);
+    while(att){
+        printf("Hits left: %d\n",att);
+        print_grid(grid);
+        printf("Enter coordinates(x y): ");
+        scanf("%d %d", &p.x, &p.y);
+        while(!check_valid_coordinate(grid, p)){
+            printf("Invalid coordinates, try again!\nEnter coordinates(x y): ");
+            scanf("%d %d", &p.x, &p.y);
+        }
+        if(check_hit(ships, p)){
+            printf("Nice shot!!\n");
+            grid[p.y-1][p.x-1] = 'x';
+        }
+        else{ 
+            printf("Missed!!\n");  
+            grid[p.y-1][p.x-1] = 'o'; 
+            att--;
+        }
+    }    
 }

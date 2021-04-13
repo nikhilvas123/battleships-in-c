@@ -45,17 +45,6 @@ typedef struct ship{
 }ship;
 
 /**
-*  Updates the n'th line with given character c at coordinates x and y
-* @param[in] grid 
-* @param[in] n
-* @param[in] c
-* @param[in] x
-* @param[in] y
-* @brief Updates the n'th line with given character c at coordinates x and y
-*/
-void update_line(char **grid, int n, char c, int x, int y);
-
-/**
 *  Prints the game menu
 * @brief Prints the game menu
 */
@@ -74,13 +63,17 @@ int check_collision(ship **ships, ship * s, int ship_no);
 
 int check_collision_ships(ship **ships, ship *s, int ship_no);
 
+pos *ship_coordinates(ship *s);
+
 int check_collision_boundary(ship *s);
 
-int check_hit(ship **ships, int x, int y);
+int check_hit(ship **ships, pos p);
 
 ship* generate_ship(ship **ships, int ship_no);
 
 void grid_show_ships(char gird[10][10], ship **ships);
+
+int check_valid_coordinate(char grid[10][10], pos p);
 
 void play_game();
 
