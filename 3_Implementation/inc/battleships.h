@@ -1,12 +1,12 @@
 /**
  * @file battleships.h
  * @author Nikhil Nevin Vas (nikhilvas123@gmail.com)
- * @brief 
+ * @brief Classic Battleships Game
  * @version 0.1
  * @date 2021-04-13
  * 
  * @copyright Copyright (c) 2021
- * 
+ * Batttle ships game on CLI
  */
 
 #ifndef __BATTLESHIPS_H__
@@ -74,7 +74,7 @@ int check_collision(ship **ships, ship * s, int ship_no);
 
 int check_collision_ships(ship **ships, ship *s, int ship_no);
 
-int check_collision_boundary(ship *s, int ship_no);
+int check_collision_boundary(ship *s);
 
 int check_hit(ship **ships, int x, int y);
 

@@ -45,40 +45,82 @@ void print_ship(ship *s){
     printf("Ship orientation:%s\n",ch);
 }
 
-int check_collision_boundary(ship * s, int ship_no){
+int check_collision_boundary(ship * s){
     switch(s->o){
         case UP:
-            if(s->p.y - SHIP_SIZES[ship_no] + 1 < 0)
+            if(s->p.y - s->len + 1 < 0)
                 return 1;
             break;
         case DOWN:
-            if(s->p.y + SHIP_SIZES[ship_no] - 1 >= GRID_SIZE)
+            if(s->p.y + s->len - 1 >= GRID_SIZE)
                 return 1;
             break;
         case LEFT:
-            if(s->p.x - SHIP_SIZES[ship_no] +1 < 0)
+            if(s->p.x - s->len + 1 < 0)
                 return 1;
             break;
         case RIGHT:
-            if(s->p.x + SHIP_SIZES[ship_no] -1 >= GRID_SIZE)
+            if(s->p.x + s->len -1 >= GRID_SIZE)
                 return 1;
             break;
     }
     return 0;
 }
 
-int check_collision_ships(ship **ships, ship *s, int ship_no){
-    // int i;
-    // for(i=0; i<ship_no; i++){
+pos *ship_coordinates(ship *s){
+    pos *p;
+    p = (pos *)malloc(sizeof(pos)*2);
+    switch(s->o){
+        case UP:
+            p[0].x = s->p.x;
+            p[0].y = s->p.y - s->len + 1;
+            p[1].x = s->p.x;
+            p[1].y = s->p.y;
+            break;
 
-    // }
+        case DOWN:
+            p[0].x = s->p.x;
+            p[0].y = s->p.y;
+            p[1].x = s->p.x;
+            p[1].y = s->p.y + s->len - 1;
+            break;
+
+        case LEFT:
+            p[0].x = s->p.x - s->len + 1;
+            p[0].y = s->p.y;
+            p[1].x = s->p.x;
+            p[1].y = s->p.y;
+            break;
+
+        case RIGHT:
+            p[0].x = s->p.x;
+            p[0].y = s->p.y;
+            p[1].x = s->p.x + s->len - 1;
+            p[1].y = s->p.y;
+            break;
+    }
+    return p;
 }
 
-int check_collision(ship **ships, ship *s, int ship_no){
-    if(check_collision_boundary(s,ship_no))
+int check_collision_ships(ship **ships, ship *s, int ship_no){
+    int i,col = 0;
+    pos *pos1, *pos2;
+    pos1 = ship_coordinates(s);
+    for(i=0; i<ship_no; i++){
+        pos2 = ship_coordinates(ships[i]);
+        if(pos1[0].x > pos2[1].x || pos1[1].x < pos2[0].x || pos1[0].x > pos2[1].y || pos1[1].y < pos2[0].y)
+            col = 0;
+        else   
+            col = 1;
+    }
+    return col;
+}
+
+int check_collision(ship **ships, ship *s,int ship_no){
+    if(check_collision_boundary(s))
         return 1;
-    // else(check_collision_ships(ships, x, ship_no))
-    //     return 1;
+    if(check_collision_ships(ships, s, ship_no))
+        return 1;
     return 0;
 }
 
@@ -110,6 +152,9 @@ void play_game(){
         s[i] = generate_ship(s,i);
     }
     
+    for(i=0; i<NO_OF_SHIPS; i++){
+        print_ship(s[i]);
+    }
 
     memset(grid,'.',GRID_SIZE*GRID_SIZE);
     printf("Hits left: %d\n",att);
