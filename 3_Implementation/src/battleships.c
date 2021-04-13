@@ -25,26 +25,82 @@ void print_grid(const char grid[GRID_SIZE][GRID_SIZE]){
     }    
 }
 
-int check_collision(ship **ships, ship * s, int ship_no){
+void print_ship(ship *s){   
+    char ch[6];
+    printf("Ship Location:%d %d\nShip size:%d\n",s->p.x, s->p.y, s->len);
+    switch(s->o){
+        case UP:
+            sprintf(ch,"%s","UP");
+            break;
+        case DOWN:
+            sprintf(ch,"%s","DOWN");
+            break;
+        case LEFT:
+            sprintf(ch,"%s","LEFT");
+            break;
+        case RIGHT:
+            sprintf(ch,"%s","RIGHT");
+            break;
+    }
+    printf("Ship orientation:%s\n",ch);
+}
+
+int check_collision_boundary(ship * s, int ship_no){
+    switch(s->o){
+        case UP:
+            if(s->p.y - SHIP_SIZES[ship_no] + 1 < 0)
+                return 1;
+            break;
+        case DOWN:
+            if(s->p.y + SHIP_SIZES[ship_no] - 1 >= GRID_SIZE)
+                return 1;
+            break;
+        case LEFT:
+            if(s->p.x - SHIP_SIZES[ship_no] +1 < 0)
+                return 1;
+            break;
+        case RIGHT:
+            if(s->p.x + SHIP_SIZES[ship_no] -1 >= GRID_SIZE)
+                return 1;
+            break;
+    }
+    return 0;
+}
+
+int check_collision_ships(ship **ships, ship *s, int ship_no){
+    // int i;
+    // for(i=0; i<ship_no; i++){
+
+    // }
+}
+
+int check_collision(ship **ships, ship *s, int ship_no){
+    if(check_collision_boundary(s,ship_no))
+        return 1;
+    // else(check_collision_ships(ships, x, ship_no))
+    //     return 1;
     return 0;
 }
 
 ship* generate_ship(ship **ships, int ship_no){
     int _x,_y;
-    srand(time(0));
+    orientation _o;
     ship *s;
     s = (ship *) malloc(sizeof(ship) * 1);
     do{
         s->len = SHIP_SIZES[ship_no];
         _x = rand()%GRID_SIZE;
         _y = rand()%GRID_SIZE;
+        _o = rand()%4;
         s->p.x = _x;
         s->p.y = _y;
+        s->o = _o;
     }while(check_collision(ships,s,ship_no));
     return s;
 }
 
 void play_game(){
+    srand(time(0));
     int att = ATTEMPTS;
     int i;
     char grid[GRID_SIZE][GRID_SIZE];
@@ -54,6 +110,7 @@ void play_game(){
         s[i] = generate_ship(s,i);
     }
     
+
     memset(grid,'.',GRID_SIZE*GRID_SIZE);
     printf("Hits left: %d\n",att);
     print_grid(grid);

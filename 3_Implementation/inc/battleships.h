@@ -68,7 +68,13 @@ void print_menu();
 */
 void print_grid(const char grid[10][10]);
 
+void print_ship(ship* s);
+
 int check_collision(ship **ships, ship * s, int ship_no);
+
+int check_collision_ships(ship **ships, ship *s, int ship_no);
+
+int check_collision_boundary(ship *s, int ship_no);
 
 int check_hit(ship **ships, int x, int y);
 
