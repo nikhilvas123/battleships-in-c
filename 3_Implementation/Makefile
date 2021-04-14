@@ -1,5 +1,5 @@
 # Name of the project
-PROJECT_NAME = battleships
+PROJECT_NAME = Battleships
 
 # Output directory
 BUILD = build
@@ -20,8 +20,6 @@ INC	= -Iinc\
 -Iunity\
 
 #Library Inlcudes
-#INCLUDE_LIBS = 
-INCLUDE_LIBS = -lcunit
 
 # Project Output name
 PROJECT_OUTPUT = $(BUILD)/$(PROJECT_NAME)
