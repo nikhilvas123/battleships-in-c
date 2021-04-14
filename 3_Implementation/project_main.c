@@ -1,7 +1,8 @@
 #include<battleships.h>
-
+/* Global dev variable */
 int dev = 0;
 
+/* Main function */
 int main(int argc, char **argv){
     if(argc == 2){
         if(strcmp("dev",argv[1]) == 0)

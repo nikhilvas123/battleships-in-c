@@ -1,13 +1,15 @@
 #include<battleships.h>
-
+/* Define constants */
 #define ATTEMPTS 15 
 #define GRID_SIZE 10
 #define NO_OF_SHIPS 5
 
 const int SHIP_SIZES[NO_OF_SHIPS]={2,2,3,4,6};
 
+/* extern variable dev */
 extern int dev;
 
+/* Prints the menu screen of game */
 void print_menu(){
     printf("*************************************************\n");
     if(dev){
@@ -22,6 +24,7 @@ void print_menu(){
     printf("Main Menu\n\n1: Play\n2: Quit\n");
 }
 
+/* Prints the grid 10x10 */
 void print_grid(const char grid[GRID_SIZE][GRID_SIZE]){
     int i, j;
     printf("   ");
@@ -38,6 +41,7 @@ void print_grid(const char grid[GRID_SIZE][GRID_SIZE]){
     }    
 }
 
+/* Check if ship has collision with the grid boundary */
 int check_collision_boundary(ship * s){
     switch(s->o){
         case UP:
@@ -60,6 +64,7 @@ int check_collision_boundary(ship * s){
     return 0;
 }
 
+/* Returns start and end of ship coordinates */
 pos *ship_coordinates(ship *s){
     pos *p;
     p = (pos *)malloc(sizeof(pos)*2);
@@ -95,6 +100,7 @@ pos *ship_coordinates(ship *s){
     return p;
 }
 
+/* Prints the details of ship */
 void print_ship(ship *s){   
     char ch[6];
     pos *p = ship_coordinates(s);
@@ -118,6 +124,7 @@ void print_ship(ship *s){
     printf("Ship orientation:%s\n",ch);
 }
 
+/* Checks is ship has collision with another ship */
 int check_collision_ships(ship **ships, ship *s, int ship_no){
     int i,col = 0;
     pos *pos1, *pos2;
@@ -138,6 +145,7 @@ int check_collision_ships(ship **ships, ship *s, int ship_no){
     return col;
 }
 
+/* Shows ships in grid as '^' in dev mode */
 void grid_show_ships(char grid[GRID_SIZE][GRID_SIZE], ship **ships){
     pos *p;
     int i,j,k;
@@ -149,6 +157,7 @@ void grid_show_ships(char grid[GRID_SIZE][GRID_SIZE], ship **ships){
     }
 }
 
+/* Checks for ship collision with boundary and other ships */
 int check_collision(ship **ships, ship *s,int ship_no){
     if(check_collision_boundary(s))
         return 1;
@@ -156,7 +165,7 @@ int check_collision(ship **ships, ship *s,int ship_no){
         return 1;
     return 0;
 }
-
+/* Returns a ship structure */
 ship* generate_ship(ship **ships, int ship_no){
     int _x,_y;
     orientation _o;
@@ -175,6 +184,7 @@ ship* generate_ship(ship **ships, int ship_no){
     return s;
 }
 
+/* Checks if given coordinates has hit the ship and simultaneously updates ship if it has been all hit */
 int check_hit_update_grid(ship **ships, char grid[GRID_SIZE][GRID_SIZE], pos p){
     int i, j, ship_hit = 0, hit = 0;
     pos *s_p;
@@ -220,7 +230,7 @@ int check_hit_update_grid(ship **ships, char grid[GRID_SIZE][GRID_SIZE], pos p){
     }
     return hit;
 }
-
+/* Check if the given coordinates are valid */
 int check_valid_coordinate(char grid[GRID_SIZE][GRID_SIZE], pos p){
     if(p.x < 1 || p.x > GRID_SIZE || p.y < 1 || p.y > GRID_SIZE)
         return 0;
@@ -230,6 +240,7 @@ int check_valid_coordinate(char grid[GRID_SIZE][GRID_SIZE], pos p){
         return 1;
 }
 
+/* Returns the number of ships hit */
 int ships_hit(ship **ships, char grid[GRID_SIZE][GRID_SIZE]){
     int count=0;
     int i;
@@ -240,6 +251,7 @@ int ships_hit(ship **ships, char grid[GRID_SIZE][GRID_SIZE]){
     return count;
 }
 
+/* Game Logic */
 void play_game(){
     pos p;
     srand(time(0));
@@ -252,9 +264,7 @@ void play_game(){
     for(i=0; i<NO_OF_SHIPS; i++){
         ships[i] = generate_ship(ships,i);
     }
-    // for(i=0; i<NO_OF_SHIPS; i++){
-    //     print_ship(ships[i]);
-    // }
+    
     memset(grid,'.',GRID_SIZE*GRID_SIZE);
     if(dev)
         grid_show_ships(grid,ships);
