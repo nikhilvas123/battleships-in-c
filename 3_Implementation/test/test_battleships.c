@@ -116,8 +116,8 @@ void test_check_collision(){
     TEST_ASSERT_EQUAL(0, check_collision(ships, ships[3],3));
     TEST_ASSERT_EQUAL(0, check_collision(ships, ships[4],4));
     TEST_ASSERT_EQUAL(1, check_collision(ships2, ships2[1],1));    
-    free(ships2[0]);
-    free(ships2[1]);
+    // free(ships2[0]);
+    // free(ships2[1]);
 }
 
 void test_check_collision_ships(){
