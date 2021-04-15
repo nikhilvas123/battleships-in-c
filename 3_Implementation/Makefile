@@ -8,8 +8,7 @@ TEST_PROJ_NAME = test_$(PROJ_NAME)
 BUILD_DIR = build
 
 # All source code files
-SRC = project_main.c\
-src/battleships.c
+SRC = src/battleships.c
 
 # All test source files
 TEST_SRC = src/battleships.c\
@@ -47,7 +46,7 @@ $(PROJ_NAME):all
 .PHONY: run clean test doc all
 
 all: $(SRC) $(BUILD_DIR)
-	gcc $(SRC) $(INC) -o $(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC))
+	gcc project_main.c $(SRC) $(INC) -o $(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC))
 
 # Call `make run` to run the application
 run: all
@@ -62,13 +61,13 @@ doc:
 	make -C ./documentation
 
 # Build and run the unit tests
-test: $(SRC) $(TEST_SRC)
-	gcc $^ $(INC) -o $(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
+test: $(TEST_SRC) $(BUILD_DIR)
+	gcc $(TEST_SRC) $(INC) -o $(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
 	$(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
 
 # Remove all the built files, invoke by `make clean`
 clean:
-	$(RM) $(call FixPath,$(BUILD_DIR)/*)
+	$(RM) $(call FixPath,$(BUILD_DIR))
 	$(RM) $(call FixPath,$(DOCUMENTATION_OUTPUT))
 	$(RM) $(call FixPath,$(PROJ_NAME),$(PROJ_NAME).gcno)
 
