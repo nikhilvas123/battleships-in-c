@@ -96,5 +96,6 @@ coverage: ${PROJ_NAME}
 	$(RM) *.DAT
 	$(RM) $(COV_SRC)
 # Dynamic check
-dynamic: $(SRC) $(BUILD_DIR)
-	gcc -fsanitize=address -fno-omit-frame-pointer project_main.c $(SRC) $(INC) -o $(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC))
+dynamic: $(TEST_SRC) $(BUILD_DIR)
+	gcc -fsanitize=address -fno-omit-frame-pointer $(TEST_SRC) $(INC) -o $(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
+	$(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
