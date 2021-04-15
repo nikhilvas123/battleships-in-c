@@ -53,6 +53,10 @@ all: $(SRC) $(BUILD_DIR)
 run: all
 	$(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC))
 
+# Run in dev mode
+dev: all
+	$(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC)) dev	
+
 # Document the code using Doxygen
 doc:
 	make -C ./documentation
