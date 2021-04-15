@@ -44,7 +44,5 @@ SF Id. |  Name   |    Features    | Issuess Raised |Issues Resolved|No Test Case
 
 ## Challenges Faced and How Was It Overcome
 
-1. ABC
-2. BCD
-3. ...
-4. ...
+1. Found it hard to specify array size of grid variable. As of now hard coded it to a constant.
+2. Faced multiple problems when integrating all the functions together. Used printf statements, and debugger to solve these issues.

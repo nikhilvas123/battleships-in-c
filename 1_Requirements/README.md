@@ -53,11 +53,11 @@ Battleship is known worldwide as a pencil and paper game which dates from World 
 ## High Level Requirements: 
 | ID | Description | Category | Status | 
 | ----- | ----- | ------- | ---------|
-| HR01 | Menu Screen | Techincal | In progress | 
-| HR02 | Grid Display | Techincal | In progress |
-| HR03 | Coordinate input from user | Techincal | In progress |
-| HR04 | Can take argument to run the game in development mode | Techincal | In progress |
-| HR05 | User can restart the game or quit | Techincal | In progress |
+| HR01 | Menu Screen | Techincal | Implemented | 
+| HR02 | Grid Display | Techincal | Implemented |
+| HR03 | Coordinate input from user | Techincal | Implemented |
+| HR04 | Can take argument to run the game in development mode | Techincal | Implemented |
+| HR05 | User can restart the game or quit | Techincal | Implemented |
 | HR06 | Implement GUI | Techincal | Future |
 | HR07 | Implement 2 player | Technical | Future |
 | HR08 | Add sound effects | Technical | Future|
@@ -65,11 +65,11 @@ Battleship is known worldwide as a pencil and paper game which dates from World 
  
 | ID | Description | HLR ID | Status (Implemented/Future) |
 | ------ | --------- | ------ | ----- |
-| LR01 | Menu screen options are Start game, Quit  | HR01 | In progress  |
-| LR02 | Displays '.' after starting the game, 'x' for correct hit, 'o' for miss hit| HR02 | In progress |
-| LR03 | User inputs x,y coordinates when promted with space in between | HR03 | In progress |
-| LR04 | While running use "dev" as command line argument | HR04 | In progress |
-| LR05 | After finishing the game, user can play again or quit. Waits for input from user | HR05 | In progress  |
+| LR01 | Menu screen options are Start game, Quit  | HR01 | Implemented  |
+| LR02 | Displays '.' after starting the game, 'x' for correct hit, 'o' for miss hit| HR02 | Implemented |
+| LR03 | User inputs x,y coordinates when promted with space in between | HR03 | Implemented |
+| LR04 | While running use "dev" as command line argument | HR04 | Implemented |
+| LR05 | After finishing the game, user can play again or quit. Waits for input from user | HR05 | Implemented  |
 | LR06 | Use GTK for gui based application | HR06 | Future  |
 | LR07 | Modify the code to support 2 player game, where players can palce the ships or randomize them | HR07 | Future |
 | LR08 | Use library to play sound effects during hit or miss | HR08 | Future |
