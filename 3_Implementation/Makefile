@@ -78,6 +78,11 @@ clean:
 $(BUILD_DIR):
 	mkdir build
 
+# Static code analysis
+
+cppcheck:
+	cppcheck -i unity --enable=all .
+
 # Coverage
 coverage: ${PROJ_NAME}
 	cp test/$(COV_SRC) .
