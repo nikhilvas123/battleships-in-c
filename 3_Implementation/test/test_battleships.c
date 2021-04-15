@@ -10,12 +10,41 @@ void setUp(){
     grid[9][9] = 'o';
 
     ship* ships[5];
+
     ships[0] = (ship *)malloc(sizeof(ship));
     ships[0]->len = ship_sizes[0];
     ships[0]->p.x = 0;
     ships[0]->p.y = 0;
     ships[0]->o = RIGHT;
     ships[0]->hit = 0;
+
+    ships[1] = (ship *)malloc(sizeof(ship));
+    ships[1]->len = ship_sizes[0];
+    ships[1]->p.x = 0;
+    ships[1]->p.y = 0;
+    ships[1]->o = RIGHT;
+    ships[1]->hit = 0;
+
+    ships[2] = (ship *)malloc(sizeof(ship));
+    ships[2]->len = ship_sizes[0];
+    ships[2]->p.x = 0;
+    ships[2]->p.y = 0;
+    ships[2]->o = RIGHT;
+    ships[2]->hit = 0;
+
+    ships[3] = (ship *)malloc(sizeof(ship));
+    ships[3]->len = ship_sizes[0];
+    ships[3]->p.x = 0;
+    ships[3]->p.y = 0;
+    ships[3]->o = RIGHT;
+    ships[3]->hit = 0;
+
+    ships[4] = (ship *)malloc(sizeof(ship));
+    ships[4]->len = ship_sizes[0];
+    ships[4]->p.x = 0;
+    ships[4]->p.y = 0;
+    ships[4]->o = RIGHT;
+    ships[4]->hit = 0;
 }
 /* Required by the unity test framework */
 void tearDown(){}
