@@ -66,6 +66,7 @@ test: $(SRC) $(TEST_SRC)
 clean:
 	$(RM) $(call FixPath,$(BUILD_DIR)/*)
 	$(RM) $(call FixPath,$(DOCUMENTATION_OUTPUT))
+	$(RM) $(call FixPath,$(PROJ_NAME),$(PROJ_NAME).gcno)
 
 # Create new build folder if not present
 $(BUILD_DIR):
