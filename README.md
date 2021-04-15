@@ -12,6 +12,14 @@ Ship size  |Number of ships
 The computer places all the ships at random in any orientation. The player has to hit all the ships (guess the location of all the ships). Correct hit will be denoted as 'x', miss hit will be denoted as 'o'.
 
    ![Battleships](https://github.com/nikhilvas123/battleships-in-c/blob/main/1_Requirements/battleships.png?w=500&h=500&q=100)
+
+## How to build
+1. make
+2. make run (Normal Mode)
+3. make run dev (Development Mode)
+
+Development mode shows all the ships as '^' while playing.
+
 Build | Code Quality | Unity | Git Instpector 
 |-----|--------------|-------|----------------
 [![C/C++ CI](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/c-cpp.yml)|[![Static Check](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/arc-cppcheck.yml/badge.svg)](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/arc-cppcheck.yml) [![Dynamic Code Check](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/dynamic-code-check.yml/badge.svg)](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/dynamic-code-check.yml) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/40bc107218b441f5b104fe14d08c92b5)](https://www.codacy.com/gh/nikhilvas123/battleships-in-c/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=nikhilvas123/battleships-in-c&amp;utm_campaign=Badge_Grade) [![CI-Coverage](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/ci-coverage.yml/badge.svg)](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/ci-coverage.yml) | [![Unit Testing - Unity](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/unit-testing.yml/badge.svg)](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/unit-testing.yml) | [![Git Inspector CI](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/arc-gitinspector.yml/badge.svg)](https://github.com/nikhilvas123/battleships-in-c/actions/workflows/arc-gitinspector.yml) | 
@@ -36,7 +44,7 @@ SF Id. |  Name   |    Features    | Issuess Raised |Issues Resolved|No Test Case
 
 ## Challenges Faced and How Was It Overcome
 
-1.   ABC
-2.   BCD
-3.   ...
-4.   ...
+1. ABC
+2. BCD
+3. ...
+4. ...

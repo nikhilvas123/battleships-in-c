@@ -15,6 +15,8 @@
 #include "battleships.h"
 #include "unity.h"
 
+void grid_init(char grid[10][10]);
+
 /* Prototypes for all the test functions */
 void test_check_collision();
 

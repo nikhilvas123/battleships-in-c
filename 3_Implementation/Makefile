@@ -76,7 +76,11 @@ $(BUILD_DIR):
 	mkdir build
 
 # Coverage
-coverage:${PROJ_NAME}
+coverage: ${PROJ_NAME}
 	gcc -fprofile-arcs -ftest-coverage $(SRC) $(INC) -o $(PROJ_NAME)
 	./${PROJ_NAME}
 	gcov -a $(SRC)
+
+# Dynamic check
+dynamic: $(SRC) $(BUILD_DIR)
+	gcc -fsanitize=address -fno-omit-frame-pointer project_main.c $(SRC) $(INC) -o $(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC))

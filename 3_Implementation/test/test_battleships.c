@@ -1,25 +1,24 @@
 #include "test_battleships.h"
-
 int dev = 0;
-
 char grid[10][10];
-// memset(grid,'.',10*10);
-// grid[0][0] = 'x';
-// grid[9][9] = 'o';
-
-// ship* ships[5];
-// ships[0] = (ship *)malloc(sizeof(ship));
-// ships[0]->len = SHIP_SIZES[0];
-// ships[0]->p.x = 0;
-// ships[0]->p.y = 0;
-// ships[0]->o = RIGHT;
-// ships[0]->hit = 0;
+int ship_sizes[5]={2,2,3,4,6};
 
 /* Required by the unity test framework */
-void setUp(){}
+void setUp(){
+    grid_init(grid);
+    grid[0][0] = 'x';
+    grid[9][9] = 'o';
+
+    ship* ships[5];
+    ships[0] = (ship *)malloc(sizeof(ship));
+    ships[0]->len = ship_sizes[0];
+    ships[0]->p.x = 0;
+    ships[0]->p.y = 0;
+    ships[0]->o = RIGHT;
+    ships[0]->hit = 0;
+}
 /* Required by the unity test framework */
 void tearDown(){}
-
 /* Start of the application test */
 int main(void)
 {
@@ -38,6 +37,10 @@ int main(void)
 
   /* Close the Unity Test Framework */
   return UNITY_END();
+}
+
+void grid_init(char grid[10][10]){
+    memset(grid,'.',100);
 }
 
 /* Write all the test functions */ 
