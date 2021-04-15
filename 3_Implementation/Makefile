@@ -15,6 +15,9 @@ TEST_SRC = src/battleships.c\
 test/test_battleships.c\
 unity/unity.c\
 
+# Covrage source file
+COV_SRC = test_battleships.c
+
 TEST_OUTPUT = $(BUILD_DIR)/Test_$(PROJ_NAME).out
 
 # All include folders with header files
@@ -77,10 +80,16 @@ $(BUILD_DIR):
 
 # Coverage
 coverage: ${PROJ_NAME}
-	gcc -fprofile-arcs -ftest-coverage $(SRC) $(INC) -o $(PROJ_NAME)
-	./${PROJ_NAME}
-	gcov -a $(SRC)
-
+	cp test/$(COV_SRC) .
+	gcc -fprofile-arcs -ftest-coverage $(TEST_SRC) $(INC) -o $(call FixPath,./$(TEST_PROJ_NAME).$(EXEC))
+	$(call FixPath,./$(TEST_PROJ_NAME).$(EXEC))
+	gcov -a $(COV_SRC)
+	$(RM) *.$(EXEC)
+	$(RM) *.gcda
+	$(RM) *.gcno
+	$(RM) *.c.gcov
+	$(RM) *.DAT
+	$(RM) $(COV_SRC)
 # Dynamic check
 dynamic: $(SRC) $(BUILD_DIR)
 	gcc -fsanitize=address -fno-omit-frame-pointer project_main.c $(SRC) $(INC) -o $(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC))
