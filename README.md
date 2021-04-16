@@ -39,7 +39,7 @@ Folder               | Description
 
 SF Id. |  Name   |    Features    | Issuess Raised |Issues Resolved|No Test Cases|Test Case Pass
 -------|---------|----------------|----------------|---------------|-------------|--------------
-`258149` | Nikhil Nevin Vas  | All features   | 3    | 2   |7   |7     
+`258149` | Nikhil Nevin Vas  | All features   | 3    | 2   |8   |8     
    
 
 ## Challenges Faced and How Was It Overcome

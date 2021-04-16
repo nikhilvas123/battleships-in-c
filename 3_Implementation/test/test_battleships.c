@@ -18,14 +18,14 @@ int main(void)
   UNITY_BEGIN();
   
 /* Run Test functions */
-  RUN_TEST(test_check_collision);
-  RUN_TEST(test_check_collision_ships);
-  RUN_TEST(test_ship_coordinates);
   RUN_TEST(test_check_collision_boundary);
+  RUN_TEST(test_check_collision_ships);
+  RUN_TEST(test_check_collision);
+  RUN_TEST(test_ship_coordinates);
   RUN_TEST(test_check_hit_update_grid);
   RUN_TEST(test_generate_ship);
   RUN_TEST(test_ships_hit);
-//   RUN_TEST(test_check_valid_coordinate);
+  RUN_TEST(test_check_valid_coordinate);
 
   /* Close the Unity Test Framework */
   return UNITY_END();
@@ -129,15 +129,14 @@ void grid_init(char grid[10][10]){
 }
 
 /* Write all the test functions */ 
-void test_check_collision(){
-    print_grid(grid);
-    TEST_ASSERT_EQUAL(0, check_collision(ships, ships[0],0));
-    TEST_ASSERT_EQUAL(0, check_collision(ships, ships[1],1));
-    TEST_ASSERT_EQUAL(0, check_collision(ships, ships[2],2));
-    TEST_ASSERT_EQUAL(0, check_collision(ships, ships[3],3));
-    TEST_ASSERT_EQUAL(0, check_collision(ships, ships[4],4));
-    TEST_ASSERT_EQUAL(1, check_collision(ships2, ships2[1],1));
-    TEST_ASSERT_EQUAL(1, check_collision(ships2, ships2[2],1));   
+
+void test_check_collision_boundary(){
+    TEST_ASSERT_EQUAL(0, check_collision_boundary(ships[0]));
+    TEST_ASSERT_EQUAL(0, check_collision_boundary(ships[1]));
+    TEST_ASSERT_EQUAL(0, check_collision_boundary(ships[2]));
+    TEST_ASSERT_EQUAL(0, check_collision_boundary(ships[3]));
+    TEST_ASSERT_EQUAL(0, check_collision_boundary(ships[4]));
+    TEST_ASSERT_EQUAL(1, check_collision_boundary(ships2[2]));
     free_mem();
 }
 
@@ -148,6 +147,18 @@ void test_check_collision_ships(){
     TEST_ASSERT_EQUAL(0, check_collision_ships(ships, ships[3],3));
     TEST_ASSERT_EQUAL(0, check_collision_ships(ships, ships[4],4));
     TEST_ASSERT_EQUAL(1, check_collision_ships(ships2, ships2[1],1));
+    free_mem();
+}
+
+void test_check_collision(){
+    print_grid(grid);
+    TEST_ASSERT_EQUAL(0, check_collision(ships, ships[0],0));
+    TEST_ASSERT_EQUAL(0, check_collision(ships, ships[1],1));
+    TEST_ASSERT_EQUAL(0, check_collision(ships, ships[2],2));
+    TEST_ASSERT_EQUAL(0, check_collision(ships, ships[3],3));
+    TEST_ASSERT_EQUAL(0, check_collision(ships, ships[4],4));
+    TEST_ASSERT_EQUAL(1, check_collision(ships2, ships2[1],1));
+    TEST_ASSERT_EQUAL(1, check_collision(ships2, ships2[2],1));   
     free_mem();
 }
 
@@ -179,16 +190,6 @@ void test_ship_coordinates(){
     TEST_ASSERT_EQUAL_MEMORY(p, temp = ship_coordinates(ships2[0]), sizeof(pos)*2);
     free(temp);
     free(p);
-    free_mem();
-}
-
-void test_check_collision_boundary(){
-    TEST_ASSERT_EQUAL(0, check_collision_boundary(ships[0]));
-    TEST_ASSERT_EQUAL(0, check_collision_boundary(ships[1]));
-    TEST_ASSERT_EQUAL(0, check_collision_boundary(ships[2]));
-    TEST_ASSERT_EQUAL(0, check_collision_boundary(ships[3]));
-    TEST_ASSERT_EQUAL(0, check_collision_boundary(ships[4]));
-    TEST_ASSERT_EQUAL(1, check_collision_boundary(ships2[2]));
     free_mem();
 }
 
