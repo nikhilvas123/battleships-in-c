@@ -245,7 +245,7 @@ int check_valid_coordinate(char grid[GRID_SIZE][GRID_SIZE], pos p){
 }
 
 /* Returns the number of ships hit */
-int ships_hit(ship **ships, char grid[GRID_SIZE][GRID_SIZE]){
+int ships_hit(ship **ships){
     int count=0;
     int i;
     for(i=0; i<NO_OF_SHIPS; i++){
@@ -291,7 +291,7 @@ void play_game(){
             grid[p.y-1][p.x-1] = 'o'; 
             att--;
         }
-        hit =  ships_hit(ships, grid); 
+        hit =  ships_hit(ships); 
         if(hit == NO_OF_SHIPS){
             printf("You Won!!\n");
             return;

@@ -147,10 +147,9 @@ void grid_show_ships(char gird[10][10], ship **ships);
  * @brief Checks the number of ships hit
  * 
  * @param[in] ships 
- * @param[in] grid 
  * @return Returns the number of ships hit 
  */
-int ships_hit(ship **ships, char grid[10][10]);
+int ships_hit(ship **ships);
 
 /**
  * @brief Checks if the input position(x,y) is valid i.e within boundary or if the location is already compromised

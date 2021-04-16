@@ -23,8 +23,8 @@ int main(void)
   RUN_TEST(test_ship_coordinates);
   RUN_TEST(test_check_collision_boundary);
   RUN_TEST(test_check_hit_update_grid);
-//   RUN_TEST(test_generate_ship);
-//   RUN_TEST(test_ships_hit);
+  RUN_TEST(test_generate_ship);
+  RUN_TEST(test_ships_hit);
 //   RUN_TEST(test_check_valid_coordinate);
 
   /* Close the Unity Test Framework */
@@ -214,8 +214,6 @@ void test_check_hit_update_grid(){
 void test_generate_ship(){
     ship *s[5];
     int i;
-    for(i=0; i<5; i++)
-      s[0] = (ship *)malloc(sizeof(ship));
     s[0] = generate_ship(s,0);
     TEST_ASSERT_EQUAL(0,check_collision(s,s[0],0));
     s[1] = generate_ship(s,1);
@@ -232,7 +230,15 @@ void test_generate_ship(){
 }
 
 void test_ships_hit(){
-
+    ship *s[5];
+    int i;
+    for(i=0; i<5; i++)
+      s[i] = generate_ship(s,i);
+    TEST_ASSERT_EQUAL(2,ships_hit(ships));
+    TEST_ASSERT_EQUAL(0,ships_hit(s));
+    for(i=0; i<5; i++)
+      free(s[i]);
+    free_mem();
 }
 
 void test_check_valid_coordinate(){
