@@ -168,18 +168,13 @@ int check_collision(ship **ships, ship *s,int ship_no){
 }
 /* Returns a ship structure */
 ship* generate_ship(ship **ships, int ship_no){
-    int _x,_y;
-    orientation _o;
     ship *s;
     s = (ship *) malloc(sizeof(ship) * 1);
     do{
         s->len = SHIP_SIZES[ship_no];
-        _x = rand()%GRID_SIZE;
-        _y = rand()%GRID_SIZE;
-        _o = rand()%4;
-        s->p.x = _x;
-        s->p.y = _y;
-        s->o = _o;
+        s->p.x = rand()%GRID_SIZE;;
+        s->p.y = rand()%GRID_SIZE;
+        s->o = rand()%4;
         s->hit = 0;
     }while(check_collision(ships,s,ship_no));
     return s;
