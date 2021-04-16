@@ -11,6 +11,12 @@ void setUp(){
 /* Required by the unity test framework */
 void tearDown(){}
 /* Start of the application test */
+for(i=0; i<5; i++)
+    free(ships[i]);
+
+  for(i=0; i<3; i++)
+    free(ships2[i]);
+  free(p);
 int main(void)
 {
   int i;
@@ -28,13 +34,6 @@ int main(void)
 //   RUN_TEST(test_check_valid_coordinate);
 
   /* Close the Unity Test Framework */
-  for(i=0; i<5; i++)
-    free(ships[i]);
-
-  for(i=0; i<3; i++)
-    free(ships2[i]);
-  free(p);
-
   return UNITY_END();
 }
 
@@ -124,7 +123,6 @@ void grid_init(char grid[10][10]){
     grid[8][9] = 'o';
     grid[3][7] = 'o';
     grid[2][3] = 'o';
-
 }
 
 /* Write all the test functions */ 
