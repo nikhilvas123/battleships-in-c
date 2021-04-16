@@ -154,6 +154,7 @@ void grid_show_ships(char grid[GRID_SIZE][GRID_SIZE], ship **ships){
         for(j=p[0].x; j<=p[1].x; j++)
             for(k=p[0].y; k<=p[1].y; k++)
                 grid[k][j] = '^';
+        free(p);
     }
 }
 
@@ -224,6 +225,7 @@ int check_hit_update_grid(ship **ships, char grid[GRID_SIZE][GRID_SIZE], pos p){
                     else ship_hit = 1;
                 }
             }
+            free(s_p);
             if(ship_hit)
                 ships[i]->hit = 1;
         }

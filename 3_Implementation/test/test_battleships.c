@@ -2,7 +2,7 @@
 int dev = 0;
 char grid[10][10];
 int ship_sizes[5]={2,2,3,4,6};
-ship* ships[5];
+ship *ships[5], *ships2[5];
 /* Required by the unity test framework */
 void setUp(){
     grid_init(grid);
@@ -29,6 +29,7 @@ void setUp(){
     grid[7][3] = 'x';
     grid[3][2] = 'x';
 
+    /* Correct ship placement */
     ships[0] = (ship *)malloc(sizeof(ship));
     ships[0]->len = ship_sizes[0];
     ships[0]->p.x = 5;
@@ -63,6 +64,30 @@ void setUp(){
     ships[4]->p.y = 3;
     ships[4]->o = DOWN;
     ships[4]->hit = 0;
+    
+    /* Colliding ships*/
+    ships2[0] = (ship *)malloc(sizeof(ship));
+    ships2[0]->len = ship_sizes[0];
+    ships2[0]->p.x = 5;
+    ships2[0]->p.y = 2;
+    ships2[0]->o = UP;
+    ships2[0]->hit = 0;
+
+    ships2[1] = (ship *)malloc(sizeof(ship));
+    ships2[1]->len = ship_sizes[1];
+    ships2[1]->p.x = 5;
+    ships2[1]->p.y = 2;
+    ships2[1]->o = UP;
+    ships2[1]->hit = 0;
+
+    /* Ships out of bound */
+    ships2[2] = (ship *)malloc(sizeof(ship));
+    ships2[2]->len = ship_sizes[2];
+    ships2[2]->p.x = 15;
+    ships2[2]->p.y = 15;
+    ships2[2]->o = RIGHT;
+    ships2[2]->hit = 0;
+
 }
 /* Required by the unity test framework */
 void tearDown(){}
@@ -75,8 +100,8 @@ int main(void)
 
 /* Run Test functions */
   RUN_TEST(test_check_collision);
-//   RUN_TEST(test_check_collision_ships);
-//   RUN_TEST(test_ship_coordinates);
+  RUN_TEST(test_check_collision_ships);
+  RUN_TEST(test_ship_coordinates);
 //   RUN_TEST(test_check_collision_boundary);
 //   RUN_TEST(test_check_hit_update_grid);
 //   RUN_TEST(test_generate_ship);
@@ -95,37 +120,46 @@ void grid_init(char grid[10][10]){
 
 /* Write all the test functions */ 
 void test_check_collision(){
-    ship* ships2[5];
-    ships2[0] = (ship *)malloc(sizeof(ship));
-    ships2[0]->len = ship_sizes[0];
-    ships2[0]->p.x = 5;
-    ships2[0]->p.y = 0;
-    ships2[0]->o = RIGHT;
-    ships2[0]->hit = 1;
-
-    ships2[1] = (ship *)malloc(sizeof(ship));
-    ships2[1]->len = ship_sizes[1];
-    ships2[1]->p.x = 5;
-    ships2[1]->p.y = 0;
-    ships2[1]->o = RIGHT;
-    ships2[1]->hit = 1;
-
     TEST_ASSERT_EQUAL(0, check_collision(ships, ships[0],0));
     TEST_ASSERT_EQUAL(0, check_collision(ships, ships[1],1));
     TEST_ASSERT_EQUAL(0, check_collision(ships, ships[2],2));
     TEST_ASSERT_EQUAL(0, check_collision(ships, ships[3],3));
     TEST_ASSERT_EQUAL(0, check_collision(ships, ships[4],4));
-    TEST_ASSERT_EQUAL(1, check_collision(ships2, ships2[1],1));    
-    free(ships2[0]);
-    free(ships2[1]);
+    TEST_ASSERT_EQUAL(1, check_collision(ships2, ships2[1],1));
+    TEST_ASSERT_EQUAL(1, check_collision(ships2, ships2[2],1));    
 }
 
 void test_check_collision_ships(){
-
+    TEST_ASSERT_EQUAL(0, check_collision_ships(ships, ships[0],0));
+    TEST_ASSERT_EQUAL(0, check_collision_ships(ships, ships[1],1));
+    TEST_ASSERT_EQUAL(0, check_collision_ships(ships, ships[2],2));
+    TEST_ASSERT_EQUAL(0, check_collision_ships(ships, ships[3],3));
+    TEST_ASSERT_EQUAL(0, check_collision_ships(ships, ships[4],4));
+    TEST_ASSERT_EQUAL(1, check_collision_ships(ships2, ships2[1],1));
 }
 
 void test_ship_coordinates(){
-
+    pos *p = (pos *)malloc(sizeof(pos) * 2);
+    p[0].x = 5;
+    p[0].y = 0;
+    p[1].x = 6;
+    p[1].y = 0;
+    TEST_ASSERT_EQUAL_MEMORY(p, ship_coordinates(ships[0]), sizeof(pos)*2);
+    p[0].x = 2;
+    p[0].y = 1;
+    p[1].x = 5;
+    p[1].y = 1;
+    TEST_ASSERT_EQUAL_MEMORY(p, ship_coordinates(ships[3]), sizeof(pos)*2);
+    p[0].x = 0;
+    p[0].y = 3;
+    p[1].x = 0;
+    p[1].y = 8;
+    TEST_ASSERT_EQUAL_MEMORY(p, ship_coordinates(ships[4]), sizeof(pos)*2);
+    p[0].x = 5;
+    p[0].y = 1;
+    p[1].x = 5;
+    p[1].y = 2;
+    TEST_ASSERT_EQUAL_MEMORY(p, ship_coordinates(ships2[0]), sizeof(pos)*2);
 }
 
 void test_check_collision_boundary(){
