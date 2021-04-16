@@ -197,8 +197,10 @@ int check_hit_update_grid(ship **ships, char grid[GRID_SIZE][GRID_SIZE], pos p){
             hit = 1;
             break;
         }
-        else
-            hit = 0;
+        else{
+            hit = 0;   
+            free(s_p); 
+        }
     }
     if(hit)
         grid[p.y-1][p.x-1] = 'x';
