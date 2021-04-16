@@ -39,10 +39,11 @@ Folder               | Description
 
 SF Id. |  Name   |    Features    | Issuess Raised |Issues Resolved|No Test Cases|Test Case Pass
 -------|---------|----------------|----------------|---------------|-------------|--------------
-`258149` | Nikhil Nevin Vas  | Feature A, B etc    | X No     | X No   |X No   |X No     
+`258149` | Nikhil Nevin Vas  | All features   | 3    | 2   |7   |7     
    
 
 ## Challenges Faced and How Was It Overcome
 
 1. Found it hard to specify array size of grid variable. As of now hard coded it to a constant.
 2. Faced multiple problems when integrating all the functions together. Used printf statements, and debugger to solve these issues.
+3. Found hard to debug memory leak.
