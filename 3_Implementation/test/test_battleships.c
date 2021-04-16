@@ -212,7 +212,23 @@ void test_check_hit_update_grid(){
 }
 
 void test_generate_ship(){
-
+    ship *s[5];
+    int i;
+    for(i=0; i<5; i++)
+      s[0] = (ship *)malloc(sizeof(ship));
+    s[0] = generate_ship(s,0);
+    TEST_ASSERT_EQUAL(0,check_collision(s,s[0],0));
+    s[1] = generate_ship(s,1);
+    TEST_ASSERT_EQUAL(0,check_collision(s,s[1],1));
+    s[2] = generate_ship(s,2);
+    TEST_ASSERT_EQUAL(0,check_collision(s,s[1],1));
+    s[3] = generate_ship(s,3);
+    TEST_ASSERT_EQUAL(0,check_collision(s,s[3],3));
+    s[4] = generate_ship(s,4);
+    TEST_ASSERT_EQUAL(0,check_collision(s,s[4],4));
+    for(i=0; i<5; i++)
+      free(s[i]);
+    free_mem();
 }
 
 void test_ships_hit(){
