@@ -160,10 +160,16 @@ void test_ship_coordinates(){
     p[1].x = 5;
     p[1].y = 2;
     TEST_ASSERT_EQUAL_MEMORY(p, ship_coordinates(ships2[0]), sizeof(pos)*2);
+    free(p);
 }
 
 void test_check_collision_boundary(){
-
+    TEST_ASSERT_EQUAL(0, check_collision_boundary(ships[0]));
+    TEST_ASSERT_EQUAL(0, check_collision_boundary(ships[1]));
+    TEST_ASSERT_EQUAL(0, check_collision_boundary(ships[2]));
+    TEST_ASSERT_EQUAL(0, check_collision_boundary(ships[3]));
+    TEST_ASSERT_EQUAL(0, check_collision_boundary(ships[4]));
+    TEST_ASSERT_EQUAL(1, check_collision_boundary(ships2[2]));
 }
 
 void test_check_hit_update_grid(){
