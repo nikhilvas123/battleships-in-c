@@ -211,6 +211,35 @@ void test_check_hit_update_grid(){
     free_mem();
 }
 
+void test_ships_hit(){
+    ship *s[5];
+    int i;
+    for(i=0; i<5; i++)
+      s[i] = generate_ship(s,i);
+    TEST_ASSERT_EQUAL(2,ships_hit(ships));
+    TEST_ASSERT_EQUAL(0,ships_hit(s));
+    for(i=0; i<5; i++)
+      free(s[i]);
+    free_mem();
+}
+
+void test_check_valid_coordinate(){
+    pos _p;
+    _p.x = 2;
+    _p.y = 11;
+    TEST_ASSERT_EQUAL(0,check_valid_coordinate(grid, _p));
+    _p.x = 3;
+    _p.y = 2;
+    TEST_ASSERT_EQUAL(0,check_valid_coordinate(grid, _p));
+    _p.x = 6;
+    _p.y = 0;
+    TEST_ASSERT_EQUAL(0,check_valid_coordinate(grid, _p));
+    _p.x = 6;
+    _p.y = 6;
+    TEST_ASSERT_EQUAL(1,check_valid_coordinate(grid, _p));
+    free_mem();
+}
+
 void test_generate_ship(){
     ship *s[5];
     int i;
@@ -227,20 +256,4 @@ void test_generate_ship(){
     for(i=0; i<5; i++)
       free(s[i]);
     free_mem();
-}
-
-void test_ships_hit(){
-    ship *s[5];
-    int i;
-    for(i=0; i<5; i++)
-      s[i] = generate_ship(s,i);
-    TEST_ASSERT_EQUAL(2,ships_hit(ships));
-    TEST_ASSERT_EQUAL(0,ships_hit(s));
-    for(i=0; i<5; i++)
-      free(s[i]);
-    free_mem();
-}
-
-void test_check_valid_coordinate(){
-
 }
