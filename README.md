@@ -16,7 +16,7 @@ The computer places all the ships at random in any orientation. The player has t
 ## How to build
 1. make
 2. make run (Normal Mode)
-3. make run dev (Development Mode)
+3. make dev (Development Mode)
 
 Development mode shows all the ships as '^' while playing.
 
